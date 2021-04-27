@@ -28,7 +28,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".StationMap"
+            android:name=".StationDetail"
             android:label="Detail of station"
             android:launchMode="singleTop">
             <meta-data

@@ -53,15 +53,12 @@ class RecyclerAdapter(val stations: Array<bikeStation>): RecyclerView.Adapter<Re
         init {
             view.setOnClickListener {
 
-                val intent = Intent(view.context, StationMap::class.java)
+                val intent = Intent(view.context, StationDetail::class.java)
 
-                /*
                 intent.putExtra(CITY_KEY, bikestation?.contract_name)
                 intent.putExtra(ADDRESS_KEY, bikestation?.address)
                 intent.putExtra(ABIKESTAND, bikestation?.available_bike_stands)
-                intent.putExtra(ABIKE, bikestation?.available_bikes)*/
-
-                val anfdmavy = bikestation?.position?.lat
+                intent.putExtra(ABIKE, bikestation?.available_bikes)
 
                 intent.putExtra(POSITION_LAT_KEY, bikestation?.position?.lat)
                 intent.putExtra(POSITION_LNG_KEY, bikestation?.position?.lng)

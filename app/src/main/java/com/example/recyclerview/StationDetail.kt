@@ -17,33 +17,88 @@ import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 import kotlinx.android.synthetic.main.activity_station_detail.*
 
-class StationDetail : AppCompatActivity() {
+class StationDetail : AppCompatActivity(), OnMapReadyCallback {
+
+    private lateinit var map: GoogleMap
+    private val REQUEST_LOCATION_PERMISSION = 1
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_station_detail)
-/*
+
         val stationCity = intent.getStringExtra(RecyclerAdapter.CITY_KEY)
         val stationAddress = intent.getStringExtra(RecyclerAdapter.ADDRESS_KEY)
         val aBikeStation = intent.getStringExtra(RecyclerAdapter.ABIKESTAND)
-        val aBike = intent.getStringExtra(RecyclerAdapter.ABIKE)*/
-
-        val lat = intent.getStringExtra(RecyclerAdapter.POSITION_LAT_KEY)?.toDouble()
-        val lng = intent.getStringExtra(RecyclerAdapter.POSITION_LNG_KEY)?.toDouble()
+        val aBike = intent.getStringExtra(RecyclerAdapter.ABIKE)
 
         val city = findViewById<TextView>(R.id.stationContry)
         val address = findViewById<TextView>(R.id.station_address)
         val availableBikestand = findViewById<TextView>(R.id.station_aBikeStand)
         val availableBike = findViewById<TextView>(R.id.station_aBike)
 
-        city.text = lat?.toString()
-        address.text = lng?.toString()
-
-
-        /*city.text = stationCity
+        city.text = stationCity
         address.text = stationAddress
         availableBikestand.text = aBikeStation
-        availableBike.text = aBike*/
+        availableBike.text = aBike
+
+        val mapFragment = supportFragmentManager
+            .findFragmentById(R.id.map) as SupportMapFragment
+        mapFragment.getMapAsync(this)
+
+    }
+
+    private fun isPermissionGranted() : Boolean {
+        return ContextCompat.checkSelfPermission(
+            this,
+            Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED
+    }
+    private fun enableMyLocation() {
+        if (isPermissionGranted()) {
+            if (ActivityCompat.checkSelfPermission(
+                    this,
+                    Manifest.permission.ACCESS_FINE_LOCATION
+                ) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(
+                    this,
+                    Manifest.permission.ACCESS_COARSE_LOCATION
+                ) != PackageManager.PERMISSION_GRANTED
+            ) {
+                return
+            }
+            map.isMyLocationEnabled = true
+        } else {
+            ActivityCompat.requestPermissions(
+                this,
+                arrayOf<String>(Manifest.permission.ACCESS_FINE_LOCATION),
+                REQUEST_LOCATION_PERMISSION
+            )
+        }
+    }
+
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<String>,
+        grantResults: IntArray) {
+        if (requestCode == REQUEST_LOCATION_PERMISSION) {
+            if (grantResults.contains(PackageManager.PERMISSION_GRANTED)) {
+                enableMyLocation()
+            }
+        }
+    }
+
+
+    override fun onMapReady(googleMap: GoogleMap) {
+        map = googleMap
+
+        val stationAddress = intent.getStringExtra(RecyclerAdapter.ADDRESS_KEY)
+
+        val lat = intent.getDoubleExtra(RecyclerAdapter.POSITION_LAT_KEY, 0.00000)
+        val lng = intent.getDoubleExtra(RecyclerAdapter.POSITION_LNG_KEY, 0.00000)
+
+        val station = LatLng(lat, lng)
+        val zoomLevel = 15f
+
+        map.moveCamera(CameraUpdateFactory.newLatLngZoom(station, zoomLevel))
+        map.addMarker(MarkerOptions().position(station).title(stationAddress))
 
     }
 

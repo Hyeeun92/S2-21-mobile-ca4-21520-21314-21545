@@ -111,29 +111,18 @@
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@+id/title_aBike"
         app:layout_constraintTop_toBottomOf="@+id/station_aBikeStand" />
-    <!--
-   <com.google.android.gms.maps.MapView
-        android:id="@+id/station_map"
-        android:layout_width="0dp"
-        android:layout_height="212dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="20dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/title_map" /> -->
 
     <fragment
         android:id="@+id/map"
         android:name="com.google.android.gms.maps.SupportMapFragment"
-        android:layout_width="373dp"
-        android:layout_height="259dp"
+        android:layout_width="376dp"
+        android:layout_height="329dp"
         android:layout_marginStart="20dp"
         android:layout_marginTop="20dp"
         android:layout_marginEnd="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/title_map" />
-
+        app:layout_constraintTop_toBottomOf="@+id/title_map"
+        tools:context=".StationDetail"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
