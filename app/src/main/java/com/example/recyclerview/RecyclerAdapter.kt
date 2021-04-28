@@ -12,7 +12,7 @@ import kotlinx.android.synthetic.main.recycler_row.view.*
 
 class RecyclerAdapter(val stations: Array<bikeStation>): RecyclerView.Adapter<RecyclerAdapter.CustomViewHolder>() {
 
-    var checkBoxStateArray = SparseBooleanArray()
+  //  var checkBoxStateArray = SparseBooleanArray()
 
     override fun getItemCount(): Int {
         return stations.count()
@@ -34,7 +34,7 @@ class RecyclerAdapter(val stations: Array<bikeStation>): RecyclerView.Adapter<Re
 
         holder?.bikestation = bikestation
 
-        holder.checkbox.isChecked = checkBoxStateArray.get(position, false)
+      //  holder.checkbox.isChecked = checkBoxStateArray.get(position, false)
 
     }
     companion object {
@@ -48,7 +48,7 @@ class RecyclerAdapter(val stations: Array<bikeStation>): RecyclerView.Adapter<Re
 
     inner class CustomViewHolder(val view: View, var bikestation: bikeStation? = null): RecyclerView.ViewHolder(view) {
 
-        val checkbox = itemView.checkBox
+      //  val checkbox = itemView.checkBox
 
         init {
             view.setOnClickListener {
@@ -67,7 +67,7 @@ class RecyclerAdapter(val stations: Array<bikeStation>): RecyclerView.Adapter<Re
                 view.context.startActivity(intent)
             }
 
-            checkbox.setOnClickListener{
+           /* checkbox.setOnClickListener{
                 if(!checkBoxStateArray.get(adapterPosition, false)) {
                     checkbox.isChecked = true
                     checkBoxStateArray.put(adapterPosition, true)
@@ -83,8 +83,9 @@ class RecyclerAdapter(val stations: Array<bikeStation>): RecyclerView.Adapter<Re
                     checkbox.isChecked = false
                     checkBoxStateArray.put(adapterPosition, false)
                 }
-            }
+            }*/
         }
+
 
     }
 

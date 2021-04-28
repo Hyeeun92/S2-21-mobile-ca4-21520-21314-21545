@@ -44,7 +44,6 @@ class StationDetail : AppCompatActivity(), OnMapReadyCallback {
         val mapFragment = supportFragmentManager
             .findFragmentById(R.id.map) as SupportMapFragment
         mapFragment.getMapAsync(this)
-
     }
 
     private fun isPermissionGranted() : Boolean {
@@ -85,8 +84,8 @@ class StationDetail : AppCompatActivity(), OnMapReadyCallback {
         }
     }
 
-
     override fun onMapReady(googleMap: GoogleMap) {
+
         map = googleMap
 
         val stationAddress = intent.getStringExtra(RecyclerAdapter.ADDRESS_KEY)
@@ -101,5 +100,7 @@ class StationDetail : AppCompatActivity(), OnMapReadyCallback {
         map.addMarker(MarkerOptions().position(station).title(stationAddress))
 
     }
+
+
 
 }

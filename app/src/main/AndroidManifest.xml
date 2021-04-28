@@ -20,7 +20,8 @@
 
         <activity
             android:name=".RecyclerActivity"
-            android:launchMode="singleTop">
+            android:launchMode="singleTop"
+            android:label="Bike station list">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -29,7 +30,7 @@
         </activity>
         <activity
             android:name=".StationDetail"
-            android:label="Detail of station"
+            android:label="Bike station details"
             android:launchMode="singleTop">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
