@@ -15,11 +15,12 @@ import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.activity_recycler.*
 import kotlinx.android.synthetic.main.activity_station_detail.*
 import kotlinx.android.synthetic.main.activity_station_detail.bottom_navigation
 
-class StationDetail : AppCompatActivity(), OnMapReadyCallback {
+class StationDetail : AppCompatActivity(), OnMapReadyCallback{
 
     private lateinit var map: GoogleMap
     private val REQUEST_LOCATION_PERMISSION = 1
@@ -43,11 +44,12 @@ class StationDetail : AppCompatActivity(), OnMapReadyCallback {
         availableBikestand.text = aBikeStation
         availableBike.text = aBike
 
-        bottom_navigation.selectedItemId = R.id.page_2
-
         val mapFragment = supportFragmentManager
             .findFragmentById(R.id.map) as SupportMapFragment
         mapFragment.getMapAsync(this)
+
+        bottom_navigation.selectedItemId = R.id.page_2
+
     }
 
     private fun isPermissionGranted() : Boolean {
