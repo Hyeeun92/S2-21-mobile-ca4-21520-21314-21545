@@ -5,22 +5,17 @@ import android.content.Intent
 import android.content.pm.PackageManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.text.Editable
-import android.text.TextWatcher
-import android.util.SparseBooleanArray
+
 import android.widget.Button
 import android.widget.TextView
-import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
-import androidx.fragment.app.Fragment
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
-import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.activity_recycler.*
 import kotlinx.android.synthetic.main.activity_station_detail.*
 import kotlinx.android.synthetic.main.activity_station_detail.bottom_navigation
@@ -29,6 +24,7 @@ class StationDetailParis : AppCompatActivity(), OnMapReadyCallback{
 
     private lateinit var map: GoogleMap
     private val REQUEST_LOCATION_PERMISSION = 1
+
 
     companion object {
         val CITY_KEY = "CITY"
@@ -70,22 +66,22 @@ class StationDetailParis : AppCompatActivity(), OnMapReadyCallback{
 
         checkbox.setOnClickListener {
 
-            /*val intent  = Intent(this, FavoriteStation::class.java)
-
+            val intent = Intent(this, FavoriteStation::class.java)
             intent.putExtra(CITY_KEY, stationCity)
             intent.putExtra(ADDRESS_KEY, stationAddress)
             intent.putExtra(ABIKESTAND, aBikeStation)
             intent.putExtra(ABIKE, aBike)
 
             intent.putExtra(POSITION_LAT_KEY, lat)
-            intent.putExtra(POSITION_LNG_KEY, lng)*/
+            intent.putExtra(POSITION_LNG_KEY, lng)
 
-            val favLists = ArrayList<favstation>()
-            favLists.add(favstation(stationCity,stationAddress,aBikeStation,aBike,lat,lng))
-
+            startActivity(intent)
         }
 
+
     }
+
+
 
     private fun isPermissionGranted() : Boolean {
         return ContextCompat.checkSelfPermission(

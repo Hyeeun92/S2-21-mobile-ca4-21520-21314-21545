@@ -16,26 +16,31 @@ class FavoriteStation: AppCompatActivity(), BottomNavigationView.OnNavigationIte
 
         recyclerView.layoutManager = LinearLayoutManager(this)
 
-        val favLists = ArrayList<favstation>()
-/*
-        val stationCity = intent.getStringExtra(StationDetailParis.CITY_KEY)
-        val stationAddress = intent.getStringExtra(StationDetailParis.ADDRESS_KEY)
-        val aBikeStation = intent.getStringExtra(StationDetailParis.ABIKESTAND)
-        val aBike = intent.getStringExtra(StationDetailParis.ABIKE)
-        val lat = intent.getDoubleExtra(StationDetailParis.POSITION_LAT_KEY, 0.00000)
-        val lng = intent.getDoubleExtra(StationDetailParis.POSITION_LNG_KEY, 0.00000)
-
-        favLists.add(favstation(stationCity,stationAddress,aBikeStation,aBike,lat,lng))
-*/
-        runOnUiThread {
-            recyclerView.adapter = FavoriteAdapter(favLists)
-        }
-
         bottom_navigation.selectedItemId = R.id.page_3
 
         val nav = findViewById<BottomNavigationView>(R.id.bottom_navigation)
         nav.setOnNavigationItemReselectedListener(this)
+
+            val stationCity = intent.getStringExtra(StationDetailParis.CITY_KEY)
+            val stationAddress = intent.getStringExtra(StationDetailParis.ADDRESS_KEY)
+            val aBikeStation = intent.getStringExtra(StationDetailParis.ABIKESTAND)
+            val aBike = intent.getStringExtra(StationDetailParis.ABIKE)
+            val lat = intent.getDoubleExtra(StationDetailParis.POSITION_LAT_KEY, 0.00000)
+            val lng = intent.getDoubleExtra(StationDetailParis.POSITION_LNG_KEY, 0.00000)
+
+            val favLists = ArrayList<favstation>()
+            favLists.addAll(listOf(favstation(stationCity, stationAddress, aBikeStation, aBike, lat, lng)))
+
+
+            runOnUiThread {
+
+                recyclerView.adapter = FavoriteAdapter(favLists)
+            }
+
+
+
     }
+
 
     override fun onNavigationItemReselected(item: MenuItem) {
         when(item.itemId) {

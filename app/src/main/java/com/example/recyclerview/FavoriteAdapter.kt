@@ -7,7 +7,8 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.recycler_row.view.*
 
-class FavoriteAdapter(val favLists: ArrayList<favstation>): RecyclerView.Adapter<FavoriteAdapter.CustomViewHolder>() {
+class FavoriteAdapter(val favLists: List<favstation>): RecyclerView.Adapter<FavoriteAdapter.CustomViewHolder>() {
+
 
     override fun getItemCount(): Int {
         return favLists.count()

@@ -49,7 +49,7 @@ class FavoriteStationDetail : AppCompatActivity(), OnMapReadyCallback{
             .findFragmentById(R.id.map) as SupportMapFragment
         mapFragment.getMapAsync(this)
 
-        bottom_navigation.selectedItemId = R.id.page_2
+        bottom_navigation.selectedItemId = R.id.page_3
 
         val checkbox = findViewById<Button>(R.id.checkBox)
         checkbox.isSelected = true
