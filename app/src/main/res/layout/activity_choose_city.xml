@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center"
+    android:layout_marginEnd="0dp"
+    android:orientation="vertical"
+    >
+
+
+
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="200dp"
+        android:fontFamily="@font/arbutusslabregular"
+        android:text="CHOOSE THE CITY"
+        android:textAlignment="center"
+        android:textColor="#000"
+        android:textSize="20dp"
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/btnDublin"
+        android:layout_width="300dp"
+        android:layout_height="36dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/button"
+        android:fontFamily="@font/arefruqaabold"
+        android:shadowColor="#595353"
+        android:text="Dublin"
+        android:textColor="#FFF"
+        android:textSize="35px"
+        app:backgroundTint="#40ACAC" />
+
+
+    <Button
+        android:id="@+id/btnParis"
+        android:layout_width="300dp"
+        android:layout_height="36dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/button"
+        android:fontFamily="@font/arefruqaabold"
+        android:shadowColor="#595353"
+        android:text="Paris"
+        android:textColor="#FFF"
+        android:textSize="35px"
+        app:backgroundTint="#40ACAC"
+        />
+
+</LinearLayout>
