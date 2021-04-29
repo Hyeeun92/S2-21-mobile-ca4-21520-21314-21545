@@ -5,20 +5,11 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
-    <CheckBox
-        android:id="@+id/checkBox"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <TextView
         android:id="@+id/country"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="70dp"
+        android:layout_marginStart="50dp"
         android:layout_marginTop="10dp"
         android:text="Country"
         app:layout_constraintStart_toStartOf="parent"
@@ -28,7 +19,7 @@
         android:id="@+id/add"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="70dp"
+        android:layout_marginStart="50dp"
         android:layout_marginTop="10dp"
         android:text="Address"
         app:layout_constraintStart_toStartOf="parent"
@@ -38,7 +29,7 @@
         android:id="@+id/ABS"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="70dp"
+        android:layout_marginStart="50dp"
         android:layout_marginTop="10dp"
         android:text="Available Bike Station"
         app:layout_constraintStart_toStartOf="parent"
@@ -48,7 +39,7 @@
         android:id="@+id/ABS2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="70dp"
+        android:layout_marginStart="50dp"
         android:layout_marginTop="10dp"
         android:text="Available Bike"
         app:layout_constraintStart_toStartOf="parent"
@@ -111,7 +102,6 @@
         android:layout_marginStart="20dp"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="20dp"
-        android:layout_marginBottom="10dp"
         android:background="#AEABAB"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuInflater
+import android.view.MenuItem
 import android.widget.Button
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -15,7 +16,7 @@ import kotlinx.android.synthetic.main.activity_recycler.*
 import okhttp3.*
 import java.io.IOException
 
-class RecyclerActivity : AppCompatActivity() {
+class StationListDublin : AppCompatActivity(), BottomNavigationView.OnNavigationItemReselectedListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,52 +28,27 @@ class RecyclerActivity : AppCompatActivity() {
 
         bottom_navigation.selectedItemId = R.id.page_2
 
-        BottomNavigationView.OnNavigationItemSelectedListener { item ->
-            when(item.itemId) {
-                R.id.page_1 -> {
-                    true
-                }
-                R.id.page_2 -> {
-                    true
-                }
-                R.id.page_3 -> {
-                    true
-                }
-                R.id.page_4 -> {
-                    true
-                }
-                R.id.page_5 -> {
-                    true
-                }
-                else -> false
-            }
-        }
+        val nav = findViewById<BottomNavigationView>(R.id.bottom_navigation)
+        nav.setOnNavigationItemReselectedListener(this)
+    }
 
-        bottom_navigation.setOnNavigationItemReselectedListener { item ->
-            when(item.itemId) {
-                R.id.page_1 -> {
-                    bottom_navigation.selectedItemId = R.id.page_1
-                }
-                R.id.page_2 -> {
-                    bottom_navigation.selectedItemId = R.id.page_2
-                }
-                R.id.page_3 -> {
-                    bottom_navigation.selectedItemId = R.id.page_3
-                }
-                R.id.page_4 -> {
-                    bottom_navigation.selectedItemId = R.id.page_4
-                }
-                R.id.page_5 -> {
-                    bottom_navigation.selectedItemId = R.id.page_5
-                }
+    override fun onNavigationItemReselected(item: MenuItem) {
+        when(item.itemId) {
+            R.id.page_1 -> {
+                val intent = Intent(this, MapsActivityDublin::class.java)
+                startActivity(intent)
             }
-        }
+            R.id.page_4 -> {
+                val intent = Intent(this, ChooseCity::class.java)
+                startActivity(intent)
+            }
 
+
+        }
     }
 
 
     fun Json() {
-        //val url = "https://api.jcdecaux.com/vls/v1/stations?apiKey=7283e9b8e9caa0f68b1afa90e6472e58c599ea00"
 
         val url = "https://api.jcdecaux.com/vls/v1/stations?contract=dublin&apiKey=7283e9b8e9caa0f68b1afa90e6472e58c599ea00"
 
@@ -100,4 +76,8 @@ class RecyclerActivity : AppCompatActivity() {
 
         })
     }
+
+
+
 }
+

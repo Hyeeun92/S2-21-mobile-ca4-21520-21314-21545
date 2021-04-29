@@ -18,13 +18,26 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
 
-        <activity
-            android:name=".RecyclerActivity"
-            android:launchMode="singleTop"
-            android:label="Bike station list">
+        <activity android:name=".ChooseCity"
+            android:label="Bike Station and weather" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".MapsActivityParis"
+            android:parentActivityName=".ChooseCity"/>
+        <activity
+            android:name=".MapsActivityDublin"
+            android:parentActivityName=".ChooseCity" />
 
+        <activity
+            android:name=".StationListDublin"
+            android:launchMode="singleTop"
+            android:label="Bike station list">
+
+            <intent-filter>
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -34,7 +47,7 @@
             android:launchMode="singleTop">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".RecyclerActivity" />
+                android:value=".StationListDublin" />
             <intent-filter>
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
