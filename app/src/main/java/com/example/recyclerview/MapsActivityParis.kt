@@ -136,8 +136,8 @@ class MapsActivityParis : AppCompatActivity(), OnMapReadyCallback, BottomNavigat
         // ADD MARKER
         mMap.addMarker(MarkerOptions().position(paris3).title("Marker Paris3"))
 
-        setMapLongClick(mMap)
-        setPoiClick(mMap)
+        //setMapLongClick(mMap)
+        //setPoiClick(mMap)
         enableMyLocation()
 
     }

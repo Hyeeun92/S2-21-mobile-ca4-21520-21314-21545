@@ -9,3 +9,8 @@ class bikeStation(val number:Int, val contract_name: String, val name: String, v
 
 class position(val lat: Double, val lng: Double)
 
+class favList(val favstations: List<favstation>)
+
+class favstation(val stationCity: String?, val stationAddress:String?, val abikeStation:String?, val aBike:String?, val lat:Double?, val lng:Double?)
+
+

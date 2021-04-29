@@ -1,9 +1,8 @@
 package com.example.recyclerview
 
-import android.content.Context
 import android.content.Intent
-import android.util.Log
-import android.util.SparseBooleanArray
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,8 +10,6 @@ import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.recycler_row.view.*
 
 class RecyclerAdapter(val stations: Array<bikeStation>): RecyclerView.Adapter<RecyclerAdapter.CustomViewHolder>() {
-
-  //  var checkBoxStateArray = SparseBooleanArray()
 
     override fun getItemCount(): Int {
         return stations.count()
@@ -33,10 +30,9 @@ class RecyclerAdapter(val stations: Array<bikeStation>): RecyclerView.Adapter<Re
         holder?.view?.abike?.text = bikestation.available_bikes
 
         holder?.bikestation = bikestation
-
-      //  holder.checkbox.isChecked = checkBoxStateArray.get(position, false)
-
     }
+
+
     companion object {
         val CITY_KEY = "CITY"
         val ADDRESS_KEY = "ADDRESS"
@@ -48,46 +44,42 @@ class RecyclerAdapter(val stations: Array<bikeStation>): RecyclerView.Adapter<Re
 
     inner class CustomViewHolder(val view: View, var bikestation: bikeStation? = null): RecyclerView.ViewHolder(view) {
 
-      //  val checkbox = itemView.checkBox
-
         init {
             view.setOnClickListener {
+                if (bikestation?.contract_name == "dublin") {
 
-                val intent = Intent(view.context, StationDetail::class.java)
+                    val intent = Intent(view.context, StationDetailDublin::class.java)
 
-                intent.putExtra(CITY_KEY, bikestation?.contract_name)
-                intent.putExtra(ADDRESS_KEY, bikestation?.address)
-                intent.putExtra(ABIKESTAND, bikestation?.available_bike_stands)
-                intent.putExtra(ABIKE, bikestation?.available_bikes)
+                    intent.putExtra(CITY_KEY, bikestation?.contract_name)
+                    intent.putExtra(ADDRESS_KEY, bikestation?.address)
+                    intent.putExtra(ABIKESTAND, bikestation?.available_bike_stands)
+                    intent.putExtra(ABIKE, bikestation?.available_bikes)
 
-                intent.putExtra(POSITION_LAT_KEY, bikestation?.position?.lat)
-                intent.putExtra(POSITION_LNG_KEY, bikestation?.position?.lng)
-                intent.putExtra(CITY_KEY, bikestation?.contract_name)
+                    intent.putExtra(POSITION_LAT_KEY, bikestation?.position?.lat)
+                    intent.putExtra(POSITION_LNG_KEY, bikestation?.position?.lng)
 
-                view.context.startActivity(intent)
-            }
-
-           /* checkbox.setOnClickListener{
-                if(!checkBoxStateArray.get(adapterPosition, false)) {
-                    checkbox.isChecked = true
-                    checkBoxStateArray.put(adapterPosition, true)
-
-                    var checkedStationAddress = bikestation?.address
-                    var checkedStationCity = bikestation?.contract_name
-                    var checkedStationABikeStation = bikestation?.available_bike_stands
-                    var checkedStationABike = bikestation?.available_bikes
-
-
+                    view.context.startActivity(intent)
                 }
                 else {
-                    checkbox.isChecked = false
-                    checkBoxStateArray.put(adapterPosition, false)
+                    val intent = Intent(view.context, StationDetailParis::class.java)
+
+                    intent.putExtra(CITY_KEY, bikestation?.contract_name)
+                    intent.putExtra(ADDRESS_KEY, bikestation?.address)
+                    intent.putExtra(ABIKESTAND, bikestation?.available_bike_stands)
+                    intent.putExtra(ABIKE, bikestation?.available_bikes)
+
+                    intent.putExtra(POSITION_LAT_KEY, bikestation?.position?.lat)
+                    intent.putExtra(POSITION_LNG_KEY, bikestation?.position?.lng)
+                    intent.putExtra(CITY_KEY, bikestation?.contract_name)
+
+                    view.context.startActivity(intent)
                 }
-            }*/
+            }
+
         }
 
-
     }
+
 
 
 }

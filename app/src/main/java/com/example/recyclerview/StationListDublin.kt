@@ -38,6 +38,10 @@ class StationListDublin : AppCompatActivity(), BottomNavigationView.OnNavigation
                 val intent = Intent(this, MapsActivityDublin::class.java)
                 startActivity(intent)
             }
+            R.id.page_3 -> {
+                val intent = Intent(this, FavoriteStation::class.java)
+                startActivity(intent)
+            }
             R.id.page_4 -> {
                 val intent = Intent(this, ChooseCity::class.java)
                 startActivity(intent)

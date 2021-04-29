@@ -39,11 +39,15 @@ class StationListParis : AppCompatActivity(), BottomNavigationView.OnNavigationI
                 startActivity(intent)
             }
 
+            R.id.page_3 -> {
+                val intent = Intent(this, FavoriteStation::class.java)
+                startActivity(intent)
+            }
+
             R.id.page_4 -> {
                 val intent = Intent(this, ChooseCity::class.java)
                 startActivity(intent)
             }
-
 
         }
     }
@@ -51,7 +55,7 @@ class StationListParis : AppCompatActivity(), BottomNavigationView.OnNavigationI
 
     fun Json() {
 
-        val url = "https://api.jcdecaux.com/vls/v1/stations?contract=dublin&apiKey=7283e9b8e9caa0f68b1afa90e6472e58c599ea00"
+        val url = "https://api.jcdecaux.com/vls/v1/stations?contract=marseille&apiKey=7283e9b8e9caa0f68b1afa90e6472e58c599ea00"
 
         val request = Request.Builder().url(url).build()
 

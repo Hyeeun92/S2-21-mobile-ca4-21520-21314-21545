@@ -5,6 +5,7 @@ import android.content.pm.PackageManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.SparseBooleanArray
+import android.widget.Button
 import android.widget.TextView
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
@@ -20,7 +21,7 @@ import kotlinx.android.synthetic.main.activity_recycler.*
 import kotlinx.android.synthetic.main.activity_station_detail.*
 import kotlinx.android.synthetic.main.activity_station_detail.bottom_navigation
 
-class StationDetail : AppCompatActivity(), OnMapReadyCallback{
+class FavoriteStationDetail : AppCompatActivity(), OnMapReadyCallback{
 
     private lateinit var map: GoogleMap
     private val REQUEST_LOCATION_PERMISSION = 1
@@ -29,10 +30,10 @@ class StationDetail : AppCompatActivity(), OnMapReadyCallback{
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_station_detail)
 
-        val stationCity = intent.getStringExtra(RecyclerAdapter.CITY_KEY)
-        val stationAddress = intent.getStringExtra(RecyclerAdapter.ADDRESS_KEY)
-        val aBikeStation = intent.getStringExtra(RecyclerAdapter.ABIKESTAND)
-        val aBike = intent.getStringExtra(RecyclerAdapter.ABIKE)
+        val stationCity = intent.getStringExtra(FavoriteAdapter.CITY_KEY)
+        val stationAddress = intent.getStringExtra(FavoriteAdapter.ADDRESS_KEY)
+        val aBikeStation = intent.getStringExtra(FavoriteAdapter.ABIKESTAND)
+        val aBike = intent.getStringExtra(FavoriteAdapter.ABIKE)
 
         val city = findViewById<TextView>(R.id.stationContry)
         val address = findViewById<TextView>(R.id.station_address)
@@ -49,6 +50,9 @@ class StationDetail : AppCompatActivity(), OnMapReadyCallback{
         mapFragment.getMapAsync(this)
 
         bottom_navigation.selectedItemId = R.id.page_2
+
+        val checkbox = findViewById<Button>(R.id.checkBox)
+        checkbox.isSelected = true
 
     }
 
@@ -96,8 +100,8 @@ class StationDetail : AppCompatActivity(), OnMapReadyCallback{
 
         val stationAddress = intent.getStringExtra(RecyclerAdapter.ADDRESS_KEY)
 
-        val lat = intent.getDoubleExtra(RecyclerAdapter.POSITION_LAT_KEY, 0.00000)
-        val lng = intent.getDoubleExtra(RecyclerAdapter.POSITION_LNG_KEY, 0.00000)
+        val lat = intent.getDoubleExtra(FavoriteAdapter.POSITION_LAT_KEY, 0.00000)
+        val lng = intent.getDoubleExtra(FavoriteAdapter.POSITION_LNG_KEY, 0.00000)
 
         val station = LatLng(lat, lng)
         val zoomLevel = 15f

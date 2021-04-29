@@ -24,7 +24,6 @@ class MapsActivityDublin : AppCompatActivity(), OnMapReadyCallback, BottomNaviga
     private lateinit var map: GoogleMap
     private val REQUEST_LOCATION_PERMISSION = 1
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_maps)
@@ -144,8 +143,8 @@ class MapsActivityDublin : AppCompatActivity(), OnMapReadyCallback, BottomNaviga
         // ADD MARKER
         map.addMarker(MarkerOptions().position(dublinSpirе).title("Marker Dublin Spirе"))
 
-        setMapLongClick(map)
-        setPoiClick(map)
+        //setMapLongClick(mMap)
+        //setPoiClick(mMap)
         enableMyLocation()
     }
 
