@@ -21,23 +21,26 @@ class FavoriteStation: AppCompatActivity(), BottomNavigationView.OnNavigationIte
         val nav = findViewById<BottomNavigationView>(R.id.bottom_navigation)
         nav.setOnNavigationItemReselectedListener(this)
 
-            val stationCity = intent.getStringExtra(StationDetailParis.CITY_KEY)
-            val stationAddress = intent.getStringExtra(StationDetailParis.ADDRESS_KEY)
-            val aBikeStation = intent.getStringExtra(StationDetailParis.ABIKESTAND)
-            val aBike = intent.getStringExtra(StationDetailParis.ABIKE)
-            val lat = intent.getDoubleExtra(StationDetailParis.POSITION_LAT_KEY, 0.00000)
-            val lng = intent.getDoubleExtra(StationDetailParis.POSITION_LNG_KEY, 0.00000)
-
-            val favLists = ArrayList<favstation>()
-            favLists.addAll(listOf(favstation(stationCity, stationAddress, aBikeStation, aBike, lat, lng)))
 
 
-            runOnUiThread {
+       /* val favList = stations.get()
 
-                recyclerView.adapter = FavoriteAdapter(favLists)
-            }
+        recyclerView.adapter = FavoriteAdapter(favList)*/
 
+        /*   val stationCity = intent.getStringExtra(StationDetail.CITY_KEY)
+           val stationAddress = intent.getStringExtra(StationDetail.ADDRESS_KEY)
+           val aBikeStation = intent.getStringExtra(StationDetail.ABIKESTAND)
+           val aBike = intent.getStringExtra(StationDetail.ABIKE)
+           val lat = intent.getDoubleExtra(StationDetail.POSITION_LAT_KEY, 0.00000)
+           val lng = intent.getDoubleExtra(StationDetail.POSITION_LNG_KEY, 0.00000)
 
+           val favLists = ArrayList<favstation>()
+           favLists.addAll(listOf(favstation(stationCity, stationAddress, aBikeStation, aBike, lat, lng)))
+
+           runOnUiThread {
+
+               recyclerView.adapter = FavoriteAdapter(favLists)
+           }*/
 
     }
 
@@ -49,7 +52,7 @@ class FavoriteStation: AppCompatActivity(), BottomNavigationView.OnNavigationIte
                 startActivity(intent)
             }
             R.id.page_2 -> {
-                val intent = Intent(this, ChooseCity::class.java)
+                val intent = Intent(this, StationList::class.java)
                 startActivity(intent)
             }
             R.id.page_4 -> {

@@ -1,15 +1,17 @@
 package com.example.recyclerview
 
 import android.content.Intent
-import android.text.Editable
-import android.text.TextWatcher
+import android.renderscript.Sampler
+import android.util.SparseBooleanArray
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.recycler_row.view.*
 
-class RecyclerAdapter(val stations: Array<bikeStation>): RecyclerView.Adapter<RecyclerAdapter.CustomViewHolder>() {
+class RecyclerAdapter(val stations: List<bikeStation>): RecyclerView.Adapter<RecyclerAdapter.CustomViewHolder>() {
+
+    val checkBoxStateArray = SparseBooleanArray()
 
     override fun getItemCount(): Int {
         return stations.count()
@@ -24,12 +26,16 @@ class RecyclerAdapter(val stations: Array<bikeStation>): RecyclerView.Adapter<Re
     override fun onBindViewHolder(holder: CustomViewHolder, position: Int) {
 
         val bikestation = stations.get(position)
+
         holder?.view?.address?.text = bikestation.address
         holder?.view?.countryName?.text = bikestation.contract_name
         holder?.view?.abikeStand?.text = bikestation.available_bike_stands
         holder?.view?.abike?.text = bikestation.available_bikes
 
         holder?.bikestation = bikestation
+
+        holder.favCheck.isChecked = checkBoxStateArray.get(position, false)
+
     }
 
 
@@ -44,11 +50,11 @@ class RecyclerAdapter(val stations: Array<bikeStation>): RecyclerView.Adapter<Re
 
     inner class CustomViewHolder(val view: View, var bikestation: bikeStation? = null): RecyclerView.ViewHolder(view) {
 
+        var favCheck = itemView.favCheck
+
         init {
             view.setOnClickListener {
-                if (bikestation?.contract_name == "dublin") {
-
-                    val intent = Intent(view.context, StationDetailDublin::class.java)
+                val intent = Intent(view.context, StationDetail::class.java)
 
                     intent.putExtra(CITY_KEY, bikestation?.contract_name)
                     intent.putExtra(ADDRESS_KEY, bikestation?.address)
@@ -58,23 +64,39 @@ class RecyclerAdapter(val stations: Array<bikeStation>): RecyclerView.Adapter<Re
                     intent.putExtra(POSITION_LAT_KEY, bikestation?.position?.lat)
                     intent.putExtra(POSITION_LNG_KEY, bikestation?.position?.lng)
 
-                    view.context.startActivity(intent)
-                }
-                else {
-                    val intent = Intent(view.context, StationDetailParis::class.java)
-
-                    intent.putExtra(CITY_KEY, bikestation?.contract_name)
-                    intent.putExtra(ADDRESS_KEY, bikestation?.address)
-                    intent.putExtra(ABIKESTAND, bikestation?.available_bike_stands)
-                    intent.putExtra(ABIKE, bikestation?.available_bikes)
-
-                    intent.putExtra(POSITION_LAT_KEY, bikestation?.position?.lat)
-                    intent.putExtra(POSITION_LNG_KEY, bikestation?.position?.lng)
-                    intent.putExtra(CITY_KEY, bikestation?.contract_name)
 
                     view.context.startActivity(intent)
-                }
+
             }
+            favCheck.setOnClickListener {
+                if (!checkBoxStateArray.get(adapterPosition, false)) {
+                    favCheck.isChecked = true
+                    //class picked(val pic: List<Int>)
+
+                    /* pickedList.equals(checkBoxStateArray)
+                     println(pickedList)*/
+
+                }else {
+                    favCheck.isChecked = false
+
+                    checkBoxStateArray.put(adapterPosition, false)
+                }
+
+                   /* val pickedaddress = bikestation?.address
+
+                    val intent = Intent(view.context, FavoriteStation::class.java)
+                    intent.putExtra(ADDRESS_KEY, pickedaddress)
+                    view.context.startActivity(intent)*/
+
+                    //val favList: List<bikeStation> = stations.filter { it.address == address }
+
+
+
+                }
+
+
+            }
+
 
         }
 
@@ -82,5 +104,7 @@ class RecyclerAdapter(val stations: Array<bikeStation>): RecyclerView.Adapter<Re
 
 
 
-}
+
+
+
 

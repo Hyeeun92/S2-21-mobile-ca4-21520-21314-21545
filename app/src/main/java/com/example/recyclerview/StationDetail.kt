@@ -1,39 +1,29 @@
 package com.example.recyclerview
 
 import android.Manifest
-import android.content.Intent
 import android.content.pm.PackageManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-
-import android.widget.Button
+import android.util.SparseBooleanArray
 import android.widget.TextView
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import androidx.fragment.app.Fragment
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.activity_recycler.*
 import kotlinx.android.synthetic.main.activity_station_detail.*
 import kotlinx.android.synthetic.main.activity_station_detail.bottom_navigation
 
-class StationDetailParis : AppCompatActivity(), OnMapReadyCallback{
+class StationDetail : AppCompatActivity(), OnMapReadyCallback{
 
     private lateinit var map: GoogleMap
     private val REQUEST_LOCATION_PERMISSION = 1
-
-
-    companion object {
-        val CITY_KEY = "CITY"
-        val ADDRESS_KEY = "ADDRESS"
-        val POSITION_LAT_KEY = "POSITION_LAT"
-        val POSITION_LNG_KEY = "POSITION_LNG"
-        val ABIKESTAND = "AVAILABLE_BIKE_STNADS"
-        val ABIKE = "AVAILABLE_BIKES"
-    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -43,8 +33,6 @@ class StationDetailParis : AppCompatActivity(), OnMapReadyCallback{
         val stationAddress = intent.getStringExtra(RecyclerAdapter.ADDRESS_KEY)
         val aBikeStation = intent.getStringExtra(RecyclerAdapter.ABIKESTAND)
         val aBike = intent.getStringExtra(RecyclerAdapter.ABIKE)
-        val lat = intent.getDoubleExtra(RecyclerAdapter.POSITION_LAT_KEY, 0.00000)
-        val lng = intent.getDoubleExtra(RecyclerAdapter.POSITION_LNG_KEY, 0.00000)
 
         val city = findViewById<TextView>(R.id.stationContry)
         val address = findViewById<TextView>(R.id.station_address)
@@ -62,26 +50,7 @@ class StationDetailParis : AppCompatActivity(), OnMapReadyCallback{
 
         bottom_navigation.selectedItemId = R.id.page_2
 
-        val checkbox = findViewById<Button>(R.id.checkBox)
-
-        checkbox.setOnClickListener {
-
-            val intent = Intent(this, FavoriteStation::class.java)
-            intent.putExtra(CITY_KEY, stationCity)
-            intent.putExtra(ADDRESS_KEY, stationAddress)
-            intent.putExtra(ABIKESTAND, aBikeStation)
-            intent.putExtra(ABIKE, aBike)
-
-            intent.putExtra(POSITION_LAT_KEY, lat)
-            intent.putExtra(POSITION_LNG_KEY, lng)
-
-            startActivity(intent)
-        }
-
-
     }
-
-
 
     private fun isPermissionGranted() : Boolean {
         return ContextCompat.checkSelfPermission(
@@ -137,5 +106,7 @@ class StationDetailParis : AppCompatActivity(), OnMapReadyCallback{
         map.addMarker(MarkerOptions().position(station).title(stationAddress))
 
     }
+
+
 
 }

@@ -55,7 +55,7 @@ class MapsActivityDublin : AppCompatActivity(), OnMapReadyCallback, BottomNaviga
                 startActivity(intent)
             }
             R.id.page_2 -> {
-                val intent = Intent(this, StationListDublin::class.java)
+                val intent = Intent(this, StationList::class.java)
                 startActivity(intent)
             }
 

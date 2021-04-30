@@ -1,14 +1,10 @@
 @file:Suppress("DEPRECATION")
 package com.example.recyclerview
 
-import android.app.Activity
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.Menu
-import android.view.MenuInflater
 import android.view.MenuItem
-import android.widget.Button
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.gson.GsonBuilder
@@ -16,7 +12,8 @@ import kotlinx.android.synthetic.main.activity_recycler.*
 import okhttp3.*
 import java.io.IOException
 
-class StationListParis : AppCompatActivity(), BottomNavigationView.OnNavigationItemReselectedListener {
+class StationList : AppCompatActivity(), BottomNavigationView.OnNavigationItemReselectedListener {
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,19 +32,20 @@ class StationListParis : AppCompatActivity(), BottomNavigationView.OnNavigationI
     override fun onNavigationItemReselected(item: MenuItem) {
         when(item.itemId) {
             R.id.page_1 -> {
-                val intent = Intent(this, MapsActivityParis::class.java)
+                val intent = Intent(this, MapsActivityDublin::class.java)
                 startActivity(intent)
             }
-
             R.id.page_3 -> {
                 val intent = Intent(this, FavoriteStation::class.java)
+
+
                 startActivity(intent)
             }
-
             R.id.page_4 -> {
                 val intent = Intent(this, ChooseCity::class.java)
                 startActivity(intent)
             }
+
 
         }
     }
@@ -55,11 +53,12 @@ class StationListParis : AppCompatActivity(), BottomNavigationView.OnNavigationI
 
     fun Json() {
 
-        val url = "https://api.jcdecaux.com/vls/v1/stations?contract=marseille&apiKey=7283e9b8e9caa0f68b1afa90e6472e58c599ea00"
+        val url = "https://api.jcdecaux.com/vls/v1/stations?contract?&apiKey=7283e9b8e9caa0f68b1afa90e6472e58c599ea00"
 
         val request = Request.Builder().url(url).build()
 
         val client = OkHttpClient()
+
         client.newCall(request).enqueue(object: Callback {
 
             override fun onResponse(call: Call, response: Response) {
@@ -70,9 +69,12 @@ class StationListParis : AppCompatActivity(), BottomNavigationView.OnNavigationI
                 val stations = gson.fromJson(body, Array<bikeStation>::class.java)
 
                 runOnUiThread{
-                   recyclerView.adapter = RecyclerAdapter(stations)
+                    val filtered: List<bikeStation> = stations.filter {it.contract_name == "dublin" || it.contract_name == "marseille"}
+                    recyclerView.adapter = RecyclerAdapter(filtered)
+
                 }
             }
+
 
             override fun onFailure(call: Call, e: IOException) {
                 println("Failed to execute request")
@@ -81,8 +83,6 @@ class StationListParis : AppCompatActivity(), BottomNavigationView.OnNavigationI
 
         })
     }
-
-
 
 }
 

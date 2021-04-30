@@ -51,8 +51,6 @@ class FavoriteStationDetail : AppCompatActivity(), OnMapReadyCallback{
 
         bottom_navigation.selectedItemId = R.id.page_3
 
-        val checkbox = findViewById<Button>(R.id.checkBox)
-        checkbox.isSelected = true
 
     }
 

@@ -49,12 +49,12 @@ class MapsActivityParis : AppCompatActivity(), OnMapReadyCallback, BottomNavigat
     }
     override fun onNavigationItemReselected(item: MenuItem) {
         when(item.itemId) {
-            R.id.page_1 -> {
-                val intent = Intent(this, MapsActivityParis::class.java)
+            R.id.page_3 -> {
+                val intent = Intent(this, FavoriteStation::class.java)
                 startActivity(intent)
             }
             R.id.page_2 -> {
-                val intent = Intent(this, StationListParis::class.java)
+                val intent = Intent(this, StationList::class.java)
                 startActivity(intent)
             }
             R.id.page_4 -> {
