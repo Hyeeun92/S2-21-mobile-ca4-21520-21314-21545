@@ -94,6 +94,15 @@ class RecyclerAdapter(val stations: List<bikeStation>): RecyclerView.Adapter<Rec
                     favCheck.isChecked = false
                     checkBoxStateArray.put(adapterPosition, false)
 
+                    val address = bikestation?.address.toString()
+
+                    list_1.remove(favList(address))
+
+                    var string_1 = gson.toJson(list_1,listType.type)
+                    App.prefs.setS("1", string_1)
+                    println(string_1)
+
+
                 }
 
                 }

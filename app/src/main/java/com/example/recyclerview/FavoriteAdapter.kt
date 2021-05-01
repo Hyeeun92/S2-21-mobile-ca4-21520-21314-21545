@@ -6,11 +6,16 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.google.gson.GsonBuilder
+import com.google.gson.reflect.TypeToken
 import kotlinx.android.synthetic.main.recycler_row.view.*
 
 class FavoriteAdapter(val stations: List<bikeStation>): RecyclerView.Adapter<FavoriteAdapter.CustomViewHolder>() {
 
     val checkBoxStateArray = SparseBooleanArray()
+    var gson = GsonBuilder().create()
+    var listType : TypeToken<MutableList<favList>> = object : TypeToken<MutableList<favList>>() {}
+    val list_1: MutableList<favList> = mutableListOf()
 
     override fun getItemCount(): Int {
         return stations.count()
@@ -64,6 +69,22 @@ class FavoriteAdapter(val stations: List<bikeStation>): RecyclerView.Adapter<Fav
 
                     view.context.startActivity(intent)
                 }
+
+            if (!checkBoxStateArray.get(adapterPosition, false)) {
+                favCheck.isChecked = true
+                checkBoxStateArray.put(adapterPosition, true)
+
+
+            }else {
+                favCheck.isChecked = false
+                checkBoxStateArray.put(adapterPosition, false)
+
+
+
+
+
+
+        }
 
             }
 
