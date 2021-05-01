@@ -3,12 +3,19 @@ package com.example.recyclerview
 import android.content.Intent
 import android.os.Bundle
 import android.view.MenuItem
+import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.gson.GsonBuilder
+import com.google.gson.reflect.TypeToken
 import kotlinx.android.synthetic.main.activity_recycler.*
+import okhttp3.*
+import java.io.IOException
 
 class FavoriteStation: AppCompatActivity(), BottomNavigationView.OnNavigationItemReselectedListener {
+
+    var listType : TypeToken<MutableList<favList>> = object : TypeToken<MutableList<favList>>() {}
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -21,29 +28,8 @@ class FavoriteStation: AppCompatActivity(), BottomNavigationView.OnNavigationIte
         val nav = findViewById<BottomNavigationView>(R.id.bottom_navigation)
         nav.setOnNavigationItemReselectedListener(this)
 
-
-
-       /* val favList = stations.get()
-
-        recyclerView.adapter = FavoriteAdapter(favList)*/
-
-        /*   val stationCity = intent.getStringExtra(StationDetail.CITY_KEY)
-           val stationAddress = intent.getStringExtra(StationDetail.ADDRESS_KEY)
-           val aBikeStation = intent.getStringExtra(StationDetail.ABIKESTAND)
-           val aBike = intent.getStringExtra(StationDetail.ABIKE)
-           val lat = intent.getDoubleExtra(StationDetail.POSITION_LAT_KEY, 0.00000)
-           val lng = intent.getDoubleExtra(StationDetail.POSITION_LNG_KEY, 0.00000)
-
-           val favLists = ArrayList<favstation>()
-           favLists.addAll(listOf(favstation(stationCity, stationAddress, aBikeStation, aBike, lat, lng)))
-
-           runOnUiThread {
-
-               recyclerView.adapter = FavoriteAdapter(favLists)
-           }*/
-
+        Json()
     }
-
 
     override fun onNavigationItemReselected(item: MenuItem) {
         when(item.itemId) {
@@ -60,9 +46,51 @@ class FavoriteStation: AppCompatActivity(), BottomNavigationView.OnNavigationIte
                 startActivity(intent)
             }
 
-
         }
     }
+
+    fun Json() {
+
+        val url = "https://api.jcdecaux.com/vls/v1/stations?contract?&apiKey=7283e9b8e9caa0f68b1afa90e6472e58c599ea00"
+
+        val request = Request.Builder().url(url).build()
+
+        val client = OkHttpClient()
+
+        client.newCall(request).enqueue(object: Callback {
+
+            override fun onResponse(call: Call, response: Response) {
+                val body = response?.body?.string()
+
+                val gson = GsonBuilder().create()
+
+                val stations = gson.fromJson(body, Array<bikeStation>::class.java)
+
+                val getPref = App.prefs.getS("1")
+
+                val data1: MutableList<favList> = gson.fromJson(getPref, listType.type)
+
+                runOnUiThread{
+
+                    data1.forEach {
+                        val item = it.address
+                        println(item)
+                        val checkList: List<bikeStation> = stations.filter { it.contract_name == item }
+                        recyclerView.adapter = FavoriteAdapter(checkList)
+                    }
+
+                }
+            }
+
+
+            override fun onFailure(call: Call, e: IOException) {
+                println("Failed to execute request")
+            }
+
+
+        })
+    }
+
 }
 
 

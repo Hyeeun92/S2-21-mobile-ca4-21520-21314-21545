@@ -7,11 +7,19 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.google.gson.GsonBuilder
+import com.google.gson.reflect.TypeToken
 import kotlinx.android.synthetic.main.recycler_row.view.*
+
+data class favList(val address:String)
 
 class RecyclerAdapter(val stations: List<bikeStation>): RecyclerView.Adapter<RecyclerAdapter.CustomViewHolder>() {
 
     val checkBoxStateArray = SparseBooleanArray()
+    var gson = GsonBuilder().create()
+    var listType : TypeToken<MutableList<favList>> = object : TypeToken<MutableList<favList>>() {}
+    val list_1: MutableList<favList> = mutableListOf()
+
 
     override fun getItemCount(): Int {
         return stations.count()
@@ -69,34 +77,29 @@ class RecyclerAdapter(val stations: List<bikeStation>): RecyclerView.Adapter<Rec
 
             }
             favCheck.setOnClickListener {
+
                 if (!checkBoxStateArray.get(adapterPosition, false)) {
                     favCheck.isChecked = true
-                    //class picked(val pic: List<Int>)
+                    checkBoxStateArray.put(adapterPosition, true)
 
-                    /* pickedList.equals(checkBoxStateArray)
-                     println(pickedList)*/
+                    val address = bikestation?.address.toString()
+
+                    list_1.add(favList(address))
+
+                    var string_1 = gson.toJson(list_1,listType.type)
+                    App.prefs.setS("1", string_1)
+                    println(string_1)
 
                 }else {
                     favCheck.isChecked = false
-
                     checkBoxStateArray.put(adapterPosition, false)
+
                 }
-
-                   /* val pickedaddress = bikestation?.address
-
-                    val intent = Intent(view.context, FavoriteStation::class.java)
-                    intent.putExtra(ADDRESS_KEY, pickedaddress)
-                    view.context.startActivity(intent)*/
-
-                    //val favList: List<bikeStation> = stations.filter { it.address == address }
-
-
 
                 }
 
 
             }
-
 
         }
 

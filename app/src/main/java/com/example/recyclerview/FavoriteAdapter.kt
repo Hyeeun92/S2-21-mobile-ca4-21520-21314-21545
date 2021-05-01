@@ -8,12 +8,12 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.recycler_row.view.*
 
-class FavoriteAdapter(val favList: List<bikeStation>): RecyclerView.Adapter<FavoriteAdapter.CustomViewHolder>() {
+class FavoriteAdapter(val stations: List<bikeStation>): RecyclerView.Adapter<FavoriteAdapter.CustomViewHolder>() {
 
     val checkBoxStateArray = SparseBooleanArray()
 
     override fun getItemCount(): Int {
-        return favList.count()
+        return stations.count()
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FavoriteAdapter.CustomViewHolder {
@@ -22,17 +22,19 @@ class FavoriteAdapter(val favList: List<bikeStation>): RecyclerView.Adapter<Favo
         return CustomViewHolder(cellForRow)
     }
 
-    override fun onBindViewHolder(holder: CustomViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: FavoriteAdapter.CustomViewHolder, position: Int) {
 
-        val favlistItem = favList.get(position)
-        holder?.view?.address?.text = favlistItem.contract_name
-        holder?.view?.countryName?.text = favlistItem.address
-        holder?.view?.abikeStand?.text = favlistItem.available_bike_stands
-        holder?.view?.abike?.text = favlistItem.available_bikes
+        val bikestation = stations.get(position)
 
-        holder?.favLists = favlistItem
+        holder?.view?.address?.text = bikestation.address
+        holder?.view?.countryName?.text = bikestation.contract_name
+        holder?.view?.abikeStand?.text = bikestation.available_bike_stands
+        holder?.view?.abike?.text = bikestation.available_bikes
+
+        holder?.bikestation = bikestation
 
         holder.favCheck.isChecked = checkBoxStateArray.get(position, true)
+
     }
 
     companion object {
@@ -44,7 +46,7 @@ class FavoriteAdapter(val favList: List<bikeStation>): RecyclerView.Adapter<Favo
         val ABIKE = "AVAILABLE_BIKES"
     }
 
-    inner class CustomViewHolder(val view: View, var favLists: bikeStation? = null): RecyclerView.ViewHolder(view) {
+    inner class CustomViewHolder(val view: View, var bikestation: bikeStation? = null): RecyclerView.ViewHolder(view) {
 
         var favCheck = itemView.favCheck
 
@@ -52,13 +54,13 @@ class FavoriteAdapter(val favList: List<bikeStation>): RecyclerView.Adapter<Favo
             view.setOnClickListener {
                     val intent = Intent(view.context, FavoriteStationDetail::class.java)
 
-                    intent.putExtra(CITY_KEY, favLists?.contract_name)
-                    intent.putExtra(ADDRESS_KEY, favLists?.address)
-                    intent.putExtra(ABIKESTAND, favLists?.available_bike_stands)
-                    intent.putExtra(ABIKE, favLists?.available_bikes)
+                    intent.putExtra(CITY_KEY, bikestation?.contract_name)
+                    intent.putExtra(ADDRESS_KEY, bikestation?.address)
+                    intent.putExtra(ABIKESTAND, bikestation?.available_bike_stands)
+                    intent.putExtra(ABIKE, bikestation?.available_bikes)
 
-                    intent.putExtra(POSITION_LAT_KEY, favLists?.position?.lat)
-                    intent.putExtra(POSITION_LNG_KEY, favLists?.position?.lng)
+                    intent.putExtra(POSITION_LAT_KEY, bikestation?.position?.lat)
+                    intent.putExtra(POSITION_LNG_KEY, bikestation?.position?.lng)
 
                     view.context.startActivity(intent)
                 }

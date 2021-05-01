@@ -1,10 +1,13 @@
 @file:Suppress("DEPRECATION")
 package com.example.recyclerview
 
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
+import android.widget.Button
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.gson.GsonBuilder
@@ -19,6 +22,7 @@ class StationList : AppCompatActivity(), BottomNavigationView.OnNavigationItemRe
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_recycler)
 
+
         recyclerView.layoutManager = LinearLayoutManager(this)
 
         Json()
@@ -27,6 +31,9 @@ class StationList : AppCompatActivity(), BottomNavigationView.OnNavigationItemRe
 
         val nav = findViewById<BottomNavigationView>(R.id.bottom_navigation)
         nav.setOnNavigationItemReselectedListener(this)
+        val checkbox = findViewById<Button>(R.id.favCheck)
+
+
     }
 
     override fun onNavigationItemReselected(item: MenuItem) {
@@ -75,14 +82,16 @@ class StationList : AppCompatActivity(), BottomNavigationView.OnNavigationItemRe
                 }
             }
 
-
             override fun onFailure(call: Call, e: IOException) {
                 println("Failed to execute request")
             }
 
-
         })
     }
 
+
+
 }
+
+
 
