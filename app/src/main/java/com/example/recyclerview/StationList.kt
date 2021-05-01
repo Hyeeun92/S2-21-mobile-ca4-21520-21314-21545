@@ -76,6 +76,7 @@ class StationList : AppCompatActivity(), BottomNavigationView.OnNavigationItemRe
                 val stations = gson.fromJson(body, Array<bikeStation>::class.java)
 
                 runOnUiThread{
+
                     val filtered: List<bikeStation> = stations.filter {it.contract_name == "dublin" || it.contract_name == "marseille"}
                     recyclerView.adapter = RecyclerAdapter(filtered)
 

@@ -60,6 +60,7 @@ class FavoriteStation: AppCompatActivity(), BottomNavigationView.OnNavigationIte
         client.newCall(request).enqueue(object: Callback {
 
             override fun onResponse(call: Call, response: Response) {
+
                 val body = response?.body?.string()
 
                 val gson = GsonBuilder().create()
@@ -70,14 +71,23 @@ class FavoriteStation: AppCompatActivity(), BottomNavigationView.OnNavigationIte
 
                 val data1: MutableList<favList> = gson.fromJson(getPref, listType.type)
 
+                val itemList : MutableList<String> = mutableListOf()
+
                 runOnUiThread{
 
-                    data1.forEach {
+                    val checkList: MutableList<bikeStation> = mutableListOf()
+
+                   data1.forEach {
                         val item = it.address
-                        println(item)
-                        val checkList: List<bikeStation> = stations.filter { it.contract_name == item }
-                        recyclerView.adapter = FavoriteAdapter(checkList)
+                        itemList.add(item)
                     }
+
+                    for(index in 0 until itemList.size) {
+                        val List: List<bikeStation> = stations.filter { it.address == itemList.get(index)}
+                        checkList += List
+                    }
+
+                    recyclerView.adapter = FavoriteAdapter(checkList)
 
                 }
             }
