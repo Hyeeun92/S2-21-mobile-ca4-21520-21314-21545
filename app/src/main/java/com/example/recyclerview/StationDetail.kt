@@ -1,14 +1,14 @@
 package com.example.recyclerview
 
 import android.Manifest
+import android.content.Intent
 import android.content.pm.PackageManager
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.SparseBooleanArray
+import android.view.MenuItem
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
-import androidx.fragment.app.Fragment
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
@@ -16,11 +16,9 @@ import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import kotlinx.android.synthetic.main.activity_recycler.*
 import kotlinx.android.synthetic.main.activity_station_detail.*
-import kotlinx.android.synthetic.main.activity_station_detail.bottom_navigation
 
-class StationDetail : AppCompatActivity(), OnMapReadyCallback{
+class StationDetail : AppCompatActivity(), OnMapReadyCallback,  BottomNavigationView.OnNavigationItemReselectedListener{
 
     private lateinit var map: GoogleMap
     private val REQUEST_LOCATION_PERMISSION = 1
@@ -49,7 +47,32 @@ class StationDetail : AppCompatActivity(), OnMapReadyCallback{
         mapFragment.getMapAsync(this)
 
         bottom_navigation.selectedItemId = R.id.page_2
+        val nav = findViewById<BottomNavigationView>(R.id.bottom_navigation)
+        nav.setOnNavigationItemReselectedListener(this)
 
+    }
+
+    override fun onNavigationItemReselected(item: MenuItem) {
+        when(item.itemId) {
+            R.id.page_1 -> {
+                val intent = Intent(this, ChooseCity::class.java)
+                startActivity(intent)
+            }
+            R.id.page_2 -> {
+                val intent = Intent(this, StationList::class.java)
+                startActivity(intent)
+            }
+            R.id.page_3 -> {
+                val intent = Intent(this, FavoriteStation::class.java)
+                startActivity(intent)
+            }
+            R.id.page_4 -> {
+                val intent = Intent(this, ChooseCityWeather::class.java)
+                startActivity(intent)
+            }
+
+
+        }
     }
 
     private fun isPermissionGranted() : Boolean {

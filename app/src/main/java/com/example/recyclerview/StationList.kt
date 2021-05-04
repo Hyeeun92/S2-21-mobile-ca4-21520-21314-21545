@@ -1,13 +1,11 @@
 @file:Suppress("DEPRECATION")
 package com.example.recyclerview
 
-import android.content.Context
 import android.content.Intent
-import android.content.SharedPreferences
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
 import android.widget.Button
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.gson.GsonBuilder
@@ -17,13 +15,13 @@ import java.io.IOException
 
 class StationList : AppCompatActivity(), BottomNavigationView.OnNavigationItemReselectedListener {
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_recycler)
 
-
         recyclerView.layoutManager = LinearLayoutManager(this)
+
+
 
         Json()
 
@@ -33,27 +31,27 @@ class StationList : AppCompatActivity(), BottomNavigationView.OnNavigationItemRe
         nav.setOnNavigationItemReselectedListener(this)
         val checkbox = findViewById<Button>(R.id.favCheck)
 
-
     }
 
     override fun onNavigationItemReselected(item: MenuItem) {
         when(item.itemId) {
             R.id.page_1 -> {
-                val intent = Intent(this, MapsActivityDublin::class.java)
+                val intent = Intent(this, ChooseCity::class.java)
+                startActivity(intent)
+            }
+            R.id.page_2 -> {
+                val intent = Intent(this, StationList::class.java)
                 startActivity(intent)
             }
             R.id.page_3 -> {
                 val intent = Intent(this, FavoriteStation::class.java)
-
-
                 startActivity(intent)
             }
+
             R.id.page_4 -> {
-                val intent = Intent(this, ChooseCity::class.java)
+                val intent = Intent(this, ChooseCityWeather::class.java)
                 startActivity(intent)
             }
-
-
         }
     }
 
@@ -89,7 +87,6 @@ class StationList : AppCompatActivity(), BottomNavigationView.OnNavigationItemRe
 
         })
     }
-
 
 
 }

@@ -3,7 +3,6 @@ package com.example.recyclerview
 import android.content.Intent
 import android.os.Bundle
 import android.view.MenuItem
-import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -23,12 +22,14 @@ class FavoriteStation: AppCompatActivity(), BottomNavigationView.OnNavigationIte
 
         recyclerView.layoutManager = LinearLayoutManager(this)
 
+        Json()
+
         bottom_navigation.selectedItemId = R.id.page_3
 
         val nav = findViewById<BottomNavigationView>(R.id.bottom_navigation)
         nav.setOnNavigationItemReselectedListener(this)
 
-        Json()
+
     }
 
     override fun onNavigationItemReselected(item: MenuItem) {
@@ -41,11 +42,15 @@ class FavoriteStation: AppCompatActivity(), BottomNavigationView.OnNavigationIte
                 val intent = Intent(this, StationList::class.java)
                 startActivity(intent)
             }
-            R.id.page_4 -> {
-                val intent = Intent(this, ChooseCity::class.java)
+            R.id.page_3 -> {
+                val intent = Intent(this, FavoriteStation::class.java)
                 startActivity(intent)
             }
 
+            R.id.page_4 -> {
+                val intent = Intent(this, ChooseCityWeather::class.java)
+                startActivity(intent)
+            }
         }
     }
 

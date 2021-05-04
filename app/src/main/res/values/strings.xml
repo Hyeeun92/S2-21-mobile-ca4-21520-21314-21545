@@ -1,6 +1,17 @@
 <resources>
-    <string name="app_name">recyclerView</string>
+    <string name="app_name">Green bike</string>
     <string name="title_activity_maps">Map</string>
+
+    <string name="title_activity_login2">LoginActivity2</string>
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password</string>
+    <string name="action_sign_in">SIGN IN</string>
+    <string name="action_sign_in_short">Sign in</string>
+
+    <string name="invalid_username">Not a valid username</string>
+    <string name="invalid_password">Password must be >5 characters</string>
+    <string name="login_failed">"Login failed"</string>
+    <string name="title_activity_dublin_map">Map</string>
 
     <string name="normal_map">Normal map</string>
     <string name="hybrid_map">Hybrid map</string>
@@ -11,4 +22,10 @@
     <string name="poi">poi</string>
     <string name="paris">paris</string>
     <string name="title_activity_maps_paris">Map</string>
+    <string name="title_activity_login">LoginActivity</string>
+
+    <string name="choose_the_location">Choose the location</string>
+    <string name="choose_the_city">CHOOSE THE CITY</string>
+    <string name="dublin_forecast">Dublin Forecast</string>
+    <string name="paris_forecast">Paris forecast</string>
 </resources>

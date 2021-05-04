@@ -14,35 +14,59 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.RecyclerView"
         android:name=".App">
+<!--
+        <activity
+            android:name="LoginActivity"
+            android:label="@string/title_activity_login" />
+        <activity android:name=".CreateAccaunt" />
+        <activity android:name=".Splash_Screen2" />
+
+        <activity
+            android:name=".Splash_Screen"
+            android:theme="@style/Theme.AppCompat.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".MainActivity" />
+
+
+       <activity android:name=".Login">
+
+        </activity>-->
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
 
-        <activity android:name=".ChooseCity"
-            android:label="Bike Station and weather" >
+        <activity
+            android:name=".ChooseCity"
+            android:label="Choose city for map" >
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
             android:name=".MapsActivityParis"
-            android:parentActivityName=".ChooseCity"/>
+            android:parentActivityName=".ChooseCity"
+            android:label="Paris Map"/>
         <activity
             android:name=".MapsActivityDublin"
-            android:parentActivityName=".ChooseCity" />
+            android:parentActivityName=".ChooseCity"
+            android:label="Dublin Map"/>
 
         <activity
             android:name=".StationList"
             android:launchMode="singleTop"
             android:label="Bike station list">
-
             <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".StationDetail"
             android:label="Bike station details"
@@ -59,16 +83,13 @@
             android:name=".FavoriteStation"
             android:launchMode="singleTop"
             android:label="Favorite bike station list">
-
             <intent-filter>
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".FavoriteStationDetail"
-            android:label="Favorite bike station details"
-            android:launchMode="singleTop">
+            android:label="Favorite bike station detail" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".FavoriteStation" />
@@ -76,6 +97,28 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity
+            android:name=".ParisWeather"
+            android:parentActivityName=".ChooseCityWeather"
+            android:label="Paris weather">
+        </activity>
+        <activity
+            android:name=".DublinWeather"
+            android:parentActivityName=".ChooseCityWeather"
+            android:label="Dublin weather">
+
+        </activity>
+        <activity android:name=".ChooseCityWeather"
+            android:label="Choose city for weather">
+            <intent-filter>
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
     </application>
+
+
+
 
 </manifest>

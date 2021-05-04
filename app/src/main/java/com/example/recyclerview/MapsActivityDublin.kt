@@ -1,14 +1,14 @@
+
 package com.example.recyclerview
 
 import android.Manifest
 import android.content.Intent
 import android.content.pm.PackageManager
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
-
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
@@ -20,7 +20,9 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.activity_recycler.*
 import java.util.*
 
-class MapsActivityDublin : AppCompatActivity(), OnMapReadyCallback, BottomNavigationView.OnNavigationItemReselectedListener {
+
+class MapsActivityDublin() : AppCompatActivity(), OnMapReadyCallback, BottomNavigationView.OnNavigationItemReselectedListener {
+
     private lateinit var map: GoogleMap
     private val REQUEST_LOCATION_PERMISSION = 1
 
@@ -32,15 +34,6 @@ class MapsActivityDublin : AppCompatActivity(), OnMapReadyCallback, BottomNaviga
                 .findFragmentById(R.id.map) as SupportMapFragment
         mapFragment.getMapAsync(this)
 
-        val actionBar = supportActionBar
-        if (actionBar != null) {
-            actionBar.title = "Map"
-
-            //back button
-            actionBar.setDisplayHomeAsUpEnabled(true)
-
-        }
-
         bottom_navigation.selectedItemId = R.id.page_1
 
         val nav = findViewById<BottomNavigationView>(R.id.bottom_navigation)
@@ -49,22 +42,24 @@ class MapsActivityDublin : AppCompatActivity(), OnMapReadyCallback, BottomNaviga
     }
 
     override fun onNavigationItemReselected(item: MenuItem) {
-        when(item.itemId) {
+        when (item.itemId) {
             R.id.page_1 -> {
-                val intent = Intent(this, MapsActivityDublin::class.java)
+                val intent = Intent(this, ChooseCity::class.java)
                 startActivity(intent)
             }
             R.id.page_2 -> {
                 val intent = Intent(this, StationList::class.java)
                 startActivity(intent)
             }
-
-            R.id.page_4 -> {
-                val intent = Intent(this, ChooseCity::class.java)
+            R.id.page_3 -> {
+                val intent = Intent(this, FavoriteStation::class.java)
                 startActivity(intent)
             }
 
-
+            R.id.page_4 -> {
+                val intent = Intent(this, ChooseCityWeather::class.java)
+                startActivity(intent)
+            }
         }
     }
 
@@ -108,23 +103,26 @@ class MapsActivityDublin : AppCompatActivity(), OnMapReadyCallback, BottomNaviga
             }
         }
     }
-
     override fun onMapReady(googleMap: GoogleMap) {
+
         map = googleMap
 
-        // Add a marker in Dublin and move the camera
-        val dublin = LatLng(53.350140, -6.266155)
-        map.addMarker(MarkerOptions().position(dublin).title("Marker in Dublin"))
+        val lat = 53.338455
+        val lng = -6.306588
+        val dublin = LatLng(lat, lng)
+
+        //Add a marker in Dublin and move the camera
+        map.addMarker(MarkerOptions().position(dublin).title(""))
         map.moveCamera(CameraUpdateFactory.newLatLng(dublin))
 
 
-      // Add a marker in Dublin and move the camera
+        // Add a marker in Dublin and move the camera
 
         val dublinGreen = LatLng(53.338126, -6.259924)
         val dublinPhenix = LatLng(53.356290, -6.334203)
         val dublinSpirе = LatLng(53.349713, -6.260088)
 
-// Add a marker in Paris and move the camera
+        // Add a marker in Dbulin and move the camera
 
         val zoomLevel = 15f
 
@@ -134,18 +132,20 @@ class MapsActivityDublin : AppCompatActivity(), OnMapReadyCallback, BottomNaviga
         map.moveCamera(CameraUpdateFactory.newLatLng(dublinGreen))
 
 
-        //  ZOOM LEVEL
+        //ZOOM LEVEL
 
-        map.moveCamera(CameraUpdateFactory.newLatLngZoom(dublinSpirе, 15f))
-        map.moveCamera((CameraUpdateFactory.newLatLngZoom(dublinSpirе, zoomLevel )))
+        map.moveCamera(CameraUpdateFactory.newLatLngZoom(dublinGreen, 15f))
+        map.moveCamera((CameraUpdateFactory.newLatLngZoom(dublinGreen, zoomLevel)))
 
 
-        // ADD MARKER
+        //ADD MARKER
         map.addMarker(MarkerOptions().position(dublinSpirе).title("Marker Dublin Spirе"))
 
-        //setMapLongClick(mMap)
-        //setPoiClick(mMap)
+        setMapLongClick(map)
+        setPoiClick(map)
         enableMyLocation()
+
+
     }
 
     private fun setPoiClick(map: GoogleMap) {
@@ -188,8 +188,5 @@ class MapsActivityDublin : AppCompatActivity(), OnMapReadyCallback, BottomNaviga
 
 
 
-
-
-  }
-
+}
 

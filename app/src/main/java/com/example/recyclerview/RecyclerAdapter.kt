@@ -1,7 +1,6 @@
 package com.example.recyclerview
 
 import android.content.Intent
-import android.renderscript.Sampler
 import android.util.SparseBooleanArray
 import android.view.LayoutInflater
 import android.view.View
@@ -46,7 +45,6 @@ class RecyclerAdapter(val stations: List<bikeStation>): RecyclerView.Adapter<Rec
 
     }
 
-
     companion object {
         val CITY_KEY = "CITY"
         val ADDRESS_KEY = "ADDRESS"
@@ -54,6 +52,7 @@ class RecyclerAdapter(val stations: List<bikeStation>): RecyclerView.Adapter<Rec
         val POSITION_LNG_KEY = "POSITION_LNG"
         val ABIKESTAND = "AVAILABLE_BIKE_STNADS"
         val ABIKE = "AVAILABLE_BIKES"
+        val POSITION = "POSITION"
     }
 
     inner class CustomViewHolder(val view: View, var bikestation: bikeStation? = null): RecyclerView.ViewHolder(view) {
@@ -61,6 +60,7 @@ class RecyclerAdapter(val stations: List<bikeStation>): RecyclerView.Adapter<Rec
         var favCheck = itemView.favCheck
 
         init {
+
             view.setOnClickListener {
                 val intent = Intent(view.context, StationDetail::class.java)
 
@@ -72,9 +72,7 @@ class RecyclerAdapter(val stations: List<bikeStation>): RecyclerView.Adapter<Rec
                     intent.putExtra(POSITION_LAT_KEY, bikestation?.position?.lat)
                     intent.putExtra(POSITION_LNG_KEY, bikestation?.position?.lng)
 
-
                     view.context.startActivity(intent)
-
             }
             favCheck.setOnClickListener {
 
@@ -92,6 +90,7 @@ class RecyclerAdapter(val stations: List<bikeStation>): RecyclerView.Adapter<Rec
 
                 }else {
                     favCheck.isChecked = false
+
                     checkBoxStateArray.put(adapterPosition, false)
 
                     val address = bikestation?.address.toString()
@@ -102,10 +101,10 @@ class RecyclerAdapter(val stations: List<bikeStation>): RecyclerView.Adapter<Rec
                     App.prefs.setS("1", string_1)
                     println(string_1)
 
-
                 }
 
                 }
+
 
 
             }

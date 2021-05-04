@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_app"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/id_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="70dp"
+        android:fontFamily="@font/rozhaoneregular"
+        android:text="dublinBike"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="50px"
+        android:textStyle="bold" />
+
+    <ImageView
+        android:id="@+id/id_logo"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_gravity="center"
+        android:src="@drawable/round" />
+
+    <Button
+        android:id="@+id/btnCreateAccaunt"
+        android:layout_width="270dp"
+        android:layout_height="36dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/buttoncreateaccount"
+        android:theme="@style/btnwhite"
+        android:text="CREATE ACCOUNT"
+        android:fontFamily="@font/arbutusslabregular"
+        android:textSize="35px"
+        android:textColor="#000"
+        app:backgroundTint="#fff"/>
+
+
+    <TextView
+        android:id="@+id/id_creating"
+        android:layout_width="251dp"
+        android:layout_height="75dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+        android:text="Creating an account allows you to sync everything across your devices, share lists of preferences with friends and family, and keeps your data safely backed up in the cloud."
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="30px"
+        android:textStyle="normal" />
+
+    <TextView
+        android:id="@+id/id_already"
+        android:layout_width="298dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:fontFamily="@font/arefruqaabold"
+        android:text="Already have an account"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="50px"
+        android:textStyle="bold" />
+
+
+    <Button
+        android:id="@+id/id_btnLogIn"
+        android:layout_width="270dp"
+        android:layout_height="36dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+        android:text="LOG IN"
+        android:fontFamily="@font/arefruqaabold"
+        android:textSize="35px"
+        android:background="@drawable/buttonlogin"
+        android:textColor="#FFF"
+        app:backgroundTint="#40ACAC"/>
+</LinearLayout>

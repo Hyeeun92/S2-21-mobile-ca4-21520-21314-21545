@@ -3,12 +3,11 @@ package com.example.recyclerview
 import android.Manifest
 import android.content.Intent
 import android.content.pm.PackageManager
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
-
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
@@ -33,14 +32,6 @@ class MapsActivityParis : AppCompatActivity(), OnMapReadyCallback, BottomNavigat
             .findFragmentById(R.id.map) as SupportMapFragment
         mapFragment.getMapAsync(this)
 
-        val actionBar = supportActionBar
-        if (actionBar != null) {
-            actionBar.title = "Map"
-
-            //back button
-            actionBar.setDisplayHomeAsUpEnabled(true)
-
-        }
         bottom_navigation.selectedItemId = R.id.page_1
 
         val nav = findViewById<BottomNavigationView>(R.id.bottom_navigation)
@@ -49,19 +40,23 @@ class MapsActivityParis : AppCompatActivity(), OnMapReadyCallback, BottomNavigat
     }
     override fun onNavigationItemReselected(item: MenuItem) {
         when(item.itemId) {
-            R.id.page_3 -> {
-                val intent = Intent(this, FavoriteStation::class.java)
+            R.id.page_1 -> {
+                val intent = Intent(this, ChooseCity::class.java)
                 startActivity(intent)
             }
             R.id.page_2 -> {
                 val intent = Intent(this, StationList::class.java)
                 startActivity(intent)
             }
-            R.id.page_4 -> {
-                val intent = Intent(this, ChooseCity::class.java)
+            R.id.page_3 -> {
+                val intent = Intent(this, FavoriteStation::class.java)
                 startActivity(intent)
             }
 
+            R.id.page_4 -> {
+                val intent = Intent(this, ChooseCityWeather::class.java)
+                startActivity(intent)
+            }
         }
     }
 

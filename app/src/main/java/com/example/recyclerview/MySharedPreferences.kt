@@ -12,6 +12,7 @@ class MySharedPreferences (context: Context) {
 
     val PREFS_FILENAME = "prefs"
     val PREF_KEY_MY_EDITTEXT = "address"
+
     val prefs: SharedPreferences = context.getSharedPreferences(PREFS_FILENAME, 0)
 
     fun getS(key: String): String?{
@@ -26,5 +27,6 @@ class MySharedPreferences (context: Context) {
     var address: String?
         get() = prefs.getString(PREF_KEY_MY_EDITTEXT, "")
         set(value) = prefs.edit().putString(PREF_KEY_MY_EDITTEXT, value).apply()
+
 
 }

@@ -1,4 +1,3 @@
-@file:Suppress("DEPRECATION")
 package com.example.recyclerview
 
 import android.content.Intent
@@ -8,29 +7,24 @@ import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.activity_choose_city.*
 
-class ChooseCity : AppCompatActivity(), BottomNavigationView.OnNavigationItemReselectedListener {
+class ChooseCityWeather : AppCompatActivity(), BottomNavigationView.OnNavigationItemReselectedListener{
 
-    override fun onCreate (savedInstanceState: Bundle?) {
+    override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_choose_city)
 
-        val actionBar = supportActionBar
-        actionBar!!.title = "Choose city"
-
-        btnParis.setOnClickListener {
-            val intent = Intent(this, MapsActivityParis::class.java)
-                startActivity(intent)
-
+        btnDublin.setOnClickListener{
+            val intent = Intent(this, DublinWeather::class.java)
+            startActivity(intent)
         }
 
-        btnDublin.setOnClickListener {
-            val intent = Intent(this, MapsActivityDublin::class.java)
-                startActivity(intent)
-
+        btnParis.setOnClickListener{
+            val intent = Intent(this, ParisWeather::class.java)
+            startActivity(intent)
         }
 
+        bottom_navigation.selectedItemId = R.id.page_4
         val nav = findViewById<BottomNavigationView>(R.id.bottom_navigation)
-        nav.selectedItemId = R.id.page_1
         nav.setOnNavigationItemReselectedListener(this)
 
     }
@@ -54,6 +48,11 @@ class ChooseCity : AppCompatActivity(), BottomNavigationView.OnNavigationItemRes
                 val intent = Intent(this, ChooseCityWeather::class.java)
                 startActivity(intent)
             }
+
+
         }
     }
+
+
+
 }

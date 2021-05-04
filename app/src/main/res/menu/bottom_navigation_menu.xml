@@ -23,7 +23,7 @@
         android:id="@+id/page_4"
         android:enabled="true"
         android:icon="@drawable/ic_baseline_cloud_24"
-        android:title="City"
+        android:title="Weather"
         />
     <item
         android:id="@+id/page_5"
