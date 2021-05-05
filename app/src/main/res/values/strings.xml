@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Green bike</string>
+    <string name="app_name">Dublin bike</string>
     <string name="title_activity_maps">Map</string>
 
     <string name="title_activity_login2">LoginActivity2</string>

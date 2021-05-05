@@ -9,6 +9,7 @@
     <TextView
         android:id="@+id/title_country"
         android:layout_width="wrap_content"
+        android:fontFamily="@font/arefruqaabold"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:layout_marginTop="20dp"
@@ -20,6 +21,7 @@
     <TextView
         android:id="@+id/title_address"
         android:layout_width="wrap_content"
+        android:fontFamily="@font/arefruqaabold"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:layout_marginTop="20dp"
@@ -30,6 +32,7 @@
 
     <TextView
         android:id="@+id/title_aBikeStand"
+        android:fontFamily="@font/arefruqaabold"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
@@ -42,6 +45,7 @@
     <TextView
         android:id="@+id/title_map"
         android:layout_width="wrap_content"
+        android:fontFamily="@font/arefruqaabold"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:layout_marginTop="30dp"
@@ -53,6 +57,7 @@
     <TextView
         android:id="@+id/title_aBike"
         android:layout_width="wrap_content"
+        android:fontFamily="@font/arefruqaabold"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:layout_marginTop="20dp"
@@ -65,6 +70,7 @@
         android:id="@+id/stationContry"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/arefruqaabold"
         android:layout_marginStart="20dp"
         android:layout_marginTop="20dp"
         android:layout_marginEnd="20dp"
@@ -78,6 +84,7 @@
         android:id="@+id/station_address"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/arefruqaabold"
         android:layout_marginStart="30dp"
         android:layout_marginTop="5dp"
         android:text="TextView"
@@ -89,6 +96,7 @@
     <TextView
         android:id="@+id/station_aBikeStand"
         android:layout_width="0dp"
+        android:fontFamily="@font/arefruqaabold"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:layout_marginTop="20dp"
@@ -102,6 +110,7 @@
         android:id="@+id/station_aBike"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/arefruqaabold"
         android:layout_marginStart="20dp"
         android:layout_marginTop="20dp"
         android:layout_marginEnd="20dp"

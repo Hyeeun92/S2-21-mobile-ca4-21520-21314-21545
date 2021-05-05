@@ -9,23 +9,6 @@
     android:layout_gravity="center">
 
 
-    <TextView
-        android:id="@+id/id_signIn"
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:layout_gravity="center"
-        android:layout_marginTop="1dp"
-        android:background="@color/color_app"
-        android:fontFamily="@font/arefruqaabold"
-        android:text="Create new Account"
-        android:textAlignment="textEnd"
-        android:paddingTop="15dp"
-        android:textColor="@color/white"
-        android:textSize="50px"
-        android:textStyle="bold"/>
-
-
-
     <EditText
         android:id="@+id/id_email"
         android:layout_width="300dp"
@@ -83,19 +66,5 @@
         android:textColor="#FFF"
         android:textSize="25px"
         app:backgroundTint="#40ACAC" />
-
-    <TextView
-        android:id="@+id/id_empty"
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:layout_gravity="center"
-        android:layout_marginTop="215dp"
-        android:background="@color/color_bottom"
-        android:fontFamily="@font/arefruqaabold"
-        android:paddingTop="15dp"
-        android:text=" "
-        android:textColor="@color/white"
-        android:textSize="50px"
-        android:textStyle="bold" />
 
 </LinearLayout>
