@@ -19,7 +19,6 @@ class RecyclerAdapter(val stations: List<bikeStation>): RecyclerView.Adapter<Rec
     var listType : TypeToken<MutableList<favList>> = object : TypeToken<MutableList<favList>>() {}
     val list_1: MutableList<favList> = mutableListOf()
 
-
     override fun getItemCount(): Int {
         return stations.count()
     }

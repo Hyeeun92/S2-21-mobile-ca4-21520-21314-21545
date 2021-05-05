@@ -27,7 +27,7 @@ class Splash_Screen2 : AppCompatActivity() {
         btnCreateAccaunt.setOnClickListener {
             Log.d("Splash_Screen2", "Try create")
             // launch the create account activity
-            val intent = Intent(this, CreateAccaunt::class.java)
+            val intent = Intent(this, CreateNewAccount::class.java)
             startActivity(intent)
 
         }

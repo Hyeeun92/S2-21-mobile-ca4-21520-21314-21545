@@ -14,32 +14,24 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.RecyclerView"
         android:name=".App">
-<!--
-        <activity
-            android:name="LoginActivity"
-            android:label="@string/title_activity_login" />
-        <activity android:name=".CreateAccaunt" />
-        <activity android:name=".Splash_Screen2" />
-
-        <activity
-            android:name=".Splash_Screen"
-            android:theme="@style/Theme.AppCompat.NoActionBar">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-        <activity android:name=".MainActivity" />
-
-
-       <activity android:name=".Login">
-
-        </activity>-->
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
+
+        <activity android:name=".CreateNewAccount"
+            android:label="Create account">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".Login"
+            android:label="Log in">
+            <intent-filter>
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
 
         <activity
             android:name=".ChooseCity"
@@ -63,7 +55,7 @@
             android:launchMode="singleTop"
             android:label="Bike station list">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -115,6 +107,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+
 
     </application>
 

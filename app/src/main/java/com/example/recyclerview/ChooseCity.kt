@@ -8,7 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.activity_choose_city.*
 
-class ChooseCity : AppCompatActivity(), BottomNavigationView.OnNavigationItemReselectedListener {
+class ChooseCity() : AppCompatActivity(), BottomNavigationView.OnNavigationItemReselectedListener {
 
     override fun onCreate (savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -17,8 +17,11 @@ class ChooseCity : AppCompatActivity(), BottomNavigationView.OnNavigationItemRes
         val actionBar = supportActionBar
         actionBar!!.title = "Choose city"
 
+
+
         btnParis.setOnClickListener {
             val intent = Intent(this, MapsActivityParis::class.java)
+
                 startActivity(intent)
 
         }
@@ -32,6 +35,8 @@ class ChooseCity : AppCompatActivity(), BottomNavigationView.OnNavigationItemRes
         val nav = findViewById<BottomNavigationView>(R.id.bottom_navigation)
         nav.selectedItemId = R.id.page_1
         nav.setOnNavigationItemReselectedListener(this)
+
+
 
     }
 
@@ -56,4 +61,6 @@ class ChooseCity : AppCompatActivity(), BottomNavigationView.OnNavigationItemRes
             }
         }
     }
+
 }
+

@@ -20,7 +20,6 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.activity_recycler.*
 import java.util.*
 
-
 class MapsActivityDublin() : AppCompatActivity(), OnMapReadyCallback, BottomNavigationView.OnNavigationItemReselectedListener {
 
     private lateinit var map: GoogleMap
@@ -38,6 +37,7 @@ class MapsActivityDublin() : AppCompatActivity(), OnMapReadyCallback, BottomNavi
 
         val nav = findViewById<BottomNavigationView>(R.id.bottom_navigation)
         nav.setOnNavigationItemReselectedListener(this)
+
 
     }
 
@@ -106,6 +106,7 @@ class MapsActivityDublin() : AppCompatActivity(), OnMapReadyCallback, BottomNavi
     override fun onMapReady(googleMap: GoogleMap) {
 
         map = googleMap
+
 
         val lat = 53.338455
         val lng = -6.306588

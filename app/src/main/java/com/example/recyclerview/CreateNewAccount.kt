@@ -1,20 +1,27 @@
+@file:Suppress("DEPRECATION")
+
 package com.example.recyclerview
 
+import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
 
-class CreateAccaunt : AppCompatActivity() {
+class CreateNewAccount : AppCompatActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_create__accaunt)
+        setContentView(R.layout.activity_create_accaunt)
 
         val id_btnCreateNewAccount = findViewById<Button>(R.id.id_btnCreateNewAccount)
         val id_email = findViewById<EditText>(R.id.id_email)
         val id_password = findViewById<EditText>(R.id.id_password)
         val id_firstname = findViewById<EditText>(R.id.id_firstname)
         val id_lastname = findViewById<EditText>(R.id.id_lastname)
+        var sharedPreferences = getSharedPreferences("USER_INFO", MODE_PRIVATE)
+        var editor: SharedPreferences.Editor = sharedPreferences.edit()
 
          id_btnCreateNewAccount.setOnClickListener{
             val email = id_email.text.toString()
@@ -22,16 +29,15 @@ class CreateAccaunt : AppCompatActivity() {
             val firstName = id_firstname.text.toString()
             val lastName = id_lastname.text.toString()
 
-            print("Email is:  + email")
+             editor.apply {
+                 putString("EMAIL", email)
+                 putString("PASSWORD", pswd)
+                 putString("FIRSTNAME", firstName)
+                 putString("LASTNAME", lastName)
+             }.apply()
 
-        }
-
-        val actionBar = supportActionBar
-        if (actionBar != null) {
-            actionBar.title = "Create Account"
-
-            //back button
-            actionBar.setDisplayHomeAsUpEnabled(true)
+             val intent = Intent(this, Login::class.java)
+             startActivity(intent)
 
         }
 

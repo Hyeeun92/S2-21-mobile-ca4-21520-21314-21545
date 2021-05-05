@@ -1,5 +1,6 @@
 package com.example.recyclerview
 
+
 class Stations(val bikestations: List<bikeStation>)
 
 class bikeStation(val number: Int, val contract_name: String, val name: String, val address: String,
@@ -8,6 +9,16 @@ class bikeStation(val number: Int, val contract_name: String, val name: String, 
                   val status: String, val last_update: String)
 
 class position(val lat: Double, val lng: Double)
+
+class User(val email:String, val password:String, val first_name:String, val last_name: String)
+
+
+
+
+
+
+
+
 
 
 
