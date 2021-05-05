@@ -34,7 +34,7 @@ The team encountered challenges in the design and the programing of the mobile a
 
 ## Demonstration
 ### Prototype
-<img width="80%" src="https://user-images.githubusercontent.com/71330530/117173674-e8735580-adc4-11eb-895a-ea9dc50248e0.gif"/>
+<img width="30%" src="https://user-images.githubusercontent.com/71330530/117173674-e8735580-adc4-11eb-895a-ea9dc50248e0.gif"/>
 
 ### Application
-<img width="80%" src="https://user-images.githubusercontent.com/71330530/117173905-1fe20200-adc5-11eb-8f5f-415d694e5d21.gif"/>
+<img width="30%" src="https://user-images.githubusercontent.com/71330530/117173905-1fe20200-adc5-11eb-8f5f-415d694e5d21.gif"/>
