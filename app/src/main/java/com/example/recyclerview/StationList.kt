@@ -4,7 +4,6 @@ package com.example.recyclerview
 import android.content.Intent
 import android.os.Bundle
 import android.view.MenuItem
-import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -27,7 +26,7 @@ class StationList : AppCompatActivity(), BottomNavigationView.OnNavigationItemRe
 
         val nav = findViewById<BottomNavigationView>(R.id.bottom_navigation)
         nav.setOnNavigationItemReselectedListener(this)
-        val checkbox = findViewById<Button>(R.id.favCheck)
+
 
     }
 
@@ -88,6 +87,8 @@ class StationList : AppCompatActivity(), BottomNavigationView.OnNavigationItemRe
 
         })
     }
+
+
 
 
 }

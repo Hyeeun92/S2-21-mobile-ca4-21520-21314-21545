@@ -11,6 +11,7 @@ class Login() : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_sign_in)
 
+
         val getEmail = findViewById<EditText>(R.id.id_email)
         val getPswd = findViewById<EditText>(R.id.password)
         val loginButton = findViewById<Button>(R.id.login)
@@ -23,17 +24,15 @@ class Login() : AppCompatActivity() {
             val inputEmail = getEmail.text.toString()
             val inputPswd = getPswd.text.toString()
 
-            if (inputEmail == email){
+            if (inputEmail == email) {
                 if (pswd == inputPswd) {
 
-                    val intent = Intent(this, StationList::class.java)
+                    val intent = Intent(this, ChooseCity::class.java)
                     startActivity(intent)
                 }
+
             }
+
         }
-
-
-
-
     }
 }

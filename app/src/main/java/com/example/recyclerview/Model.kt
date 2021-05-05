@@ -10,7 +10,8 @@ class bikeStation(val number: Int, val contract_name: String, val name: String, 
 
 class position(val lat: Double, val lng: Double)
 
-class User(val email:String, val password:String, val first_name:String, val last_name: String)
+
+
 
 
 

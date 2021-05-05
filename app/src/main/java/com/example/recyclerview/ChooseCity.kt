@@ -27,6 +27,7 @@ class ChooseCity() : AppCompatActivity(), BottomNavigationView.OnNavigationItemR
         }
 
         btnDublin.setOnClickListener {
+
             val intent = Intent(this, MapsActivityDublin::class.java)
                 startActivity(intent)
 
@@ -65,6 +66,8 @@ class ChooseCity() : AppCompatActivity(), BottomNavigationView.OnNavigationItemR
             }
         }
     }
+
+
 
 }
 
