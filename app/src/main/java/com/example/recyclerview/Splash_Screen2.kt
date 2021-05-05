@@ -11,6 +11,7 @@ class Splash_Screen2 : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash__screen2)
+        this.supportActionBar?.hide()
 
         val id_btnLogIn = findViewById<Button>(R.id.id_btnLogIn)
         val btnCreateAccaunt = findViewById<Button>(R.id.btnCreateAccaunt)
