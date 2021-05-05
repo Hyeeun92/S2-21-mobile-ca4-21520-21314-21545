@@ -1,6 +1,11 @@
 @file:Suppress("DEPRECATION")
-
 package com.example.recyclerview
+
+/*
+21545 - Hyeeun Lee
+21520 - Liubov Eremenko
+21314 - Nathalie Flores
+*/
 
 import android.os.AsyncTask
 import android.os.Bundle
@@ -15,24 +20,14 @@ import java.text.SimpleDateFormat
 import java.util.*
 
 class ParisWeather : AppCompatActivity() {
-
+    //Initialize city name and api
     val CITYF: String = "paris,fr"
     val APIF: String = "5c918104e6c79f4b58a8117609d36a79"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_paris_weather)
-
-        val actionBar = supportActionBar
-
-        actionBar!!.title = "Paris Forecast"
-
-        actionBar.setDisplayHomeAsUpEnabled(true)
-
-        weatherTask2().execute()
-
     }
-
 
     inner class weatherTask2() : AsyncTask<String, Void, String>() {
         override fun onPreExecute() {

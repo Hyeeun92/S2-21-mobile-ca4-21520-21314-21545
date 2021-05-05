@@ -6,17 +6,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.google.gson.GsonBuilder
-import com.google.gson.reflect.TypeToken
 import kotlinx.android.synthetic.main.recycler_row.view.*
 
 class FavoriteAdapter(val stations: List<bikeStation>): RecyclerView.Adapter<FavoriteAdapter.CustomViewHolder>() {
 
+    //Initialize check box boolean array
     val checkBoxStateArray = SparseBooleanArray()
-    var gson = GsonBuilder().create()
-    var listType : TypeToken<MutableList<favList>> = object : TypeToken<MutableList<favList>>() {}
-    val list_1: MutableList<favList> = mutableListOf()
 
+    //count data for recyclerview list
     override fun getItemCount(): Int {
         return stations.count()
     }
@@ -29,6 +26,7 @@ class FavoriteAdapter(val stations: List<bikeStation>): RecyclerView.Adapter<Fav
 
     override fun onBindViewHolder(holder: FavoriteAdapter.CustomViewHolder, position: Int) {
 
+        // get data from data class (from json)
         val bikestation = stations.get(position)
 
         holder?.view?.address?.text = bikestation.address
@@ -38,10 +36,12 @@ class FavoriteAdapter(val stations: List<bikeStation>): RecyclerView.Adapter<Fav
 
         holder?.bikestation = bikestation
 
+        //set all check box is clicked
         holder.favCheck.isChecked = checkBoxStateArray.get(position, true)
 
     }
 
+    //set keys for intent
     companion object {
         val CITY_KEY = "CITY"
         val ADDRESS_KEY = "ADDRESS"
@@ -53,22 +53,22 @@ class FavoriteAdapter(val stations: List<bikeStation>): RecyclerView.Adapter<Fav
 
     inner class CustomViewHolder(val view: View, var bikestation: bikeStation? = null): RecyclerView.ViewHolder(view) {
 
+        //initialize checkbox
         var favCheck = itemView.favCheck
 
         init {
             view.setOnClickListener {
-                    val intent = Intent(view.context, FavoriteStationDetail::class.java)
 
-                    intent.putExtra(CITY_KEY, bikestation?.contract_name)
-                    intent.putExtra(ADDRESS_KEY, bikestation?.address)
-                    intent.putExtra(ABIKESTAND, bikestation?.available_bike_stands)
-                    intent.putExtra(ABIKE, bikestation?.available_bikes)
-
-                    intent.putExtra(POSITION_LAT_KEY, bikestation?.position?.lat)
-                    intent.putExtra(POSITION_LNG_KEY, bikestation?.position?.lng)
-
-                    view.context.startActivity(intent)
-                }
+                //use intent to send data to favorite station detail class
+                val intent = Intent(view.context, FavoriteStationDetail::class.java)
+                intent.putExtra(CITY_KEY, bikestation?.contract_name)
+                intent.putExtra(ADDRESS_KEY, bikestation?.address)
+                intent.putExtra(ABIKESTAND, bikestation?.available_bike_stands)
+                intent.putExtra(ABIKE, bikestation?.available_bikes)
+                intent.putExtra(POSITION_LAT_KEY, bikestation?.position?.lat)
+                intent.putExtra(POSITION_LNG_KEY, bikestation?.position?.lng)
+                view.context.startActivity(intent)
+            }
 
             if (!checkBoxStateArray.get(adapterPosition, false)) {
                 favCheck.isChecked = true
@@ -84,11 +84,11 @@ class FavoriteAdapter(val stations: List<bikeStation>): RecyclerView.Adapter<Fav
 
 
 
-        }
-
             }
 
         }
+
+    }
 }
 
 

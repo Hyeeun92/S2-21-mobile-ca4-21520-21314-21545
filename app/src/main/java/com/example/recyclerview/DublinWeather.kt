@@ -1,6 +1,11 @@
 @file:Suppress("DEPRECATION")
-
 package com.example.recyclerview
+
+/*
+21545 - Hyeeun Lee
+21520 - Liubov Eremenko
+21314 - Nathalie Flores
+*/
 
 import android.os.AsyncTask
 import android.os.Bundle
@@ -16,21 +21,14 @@ import java.util.*
 
 class DublinWeather : AppCompatActivity(){
 
+    //Initialize city name and api key
     val CITY: String = "dublin,ie"
     val API: String = "0d0e5ca92e7f7ebe47a9fa5c21f86cb8"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_paris_weather)
-
-        val actionBar = supportActionBar
-
-        actionBar!!.title = "Dublin Forecast"
-
-        actionBar.setDisplayHomeAsUpEnabled(true)
-
         weatherTask().execute()
-
     }
 
     inner class weatherTask() : AsyncTask<String, Void, String>() {
