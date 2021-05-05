@@ -13,7 +13,7 @@ To enable learners to understand the kotlin language and android studio to devel
 Assignment will be completed in 2 parts – prototype and android mobile application(85%)
 
 ## Additional Information 
-    Android mobile Application – bike stations and weather app:
+Android mobile Application – bike stations and weather app:
 1.	List of bike stations in both Dublin and Paris using JC Decaux Bikes API
 2.	A map for both cities(Dublin, Paris) and showing the bike locations around a city
 3.	Show weather forecast of both cities based on an pi call to ‘OpenWeather.org’
