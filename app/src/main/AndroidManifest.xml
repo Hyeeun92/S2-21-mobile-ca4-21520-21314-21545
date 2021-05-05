@@ -27,8 +27,7 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".Splash_Screen2"
-            android:label="Create account">
+        <activity android:name=".Splash_Screen2">
             <intent-filter>
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
@@ -123,6 +122,13 @@
         </activity>
         <activity android:name=".ChooseCityWeather"
             android:label="Choose city for weather">
+            <intent-filter>
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name=".ManageAccount"
+            android:label="Manage account">
             <intent-filter>
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>

@@ -15,11 +15,11 @@ class CreateNewAccount : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_create_accaunt)
 
-        val id_btnCreateNewAccount = findViewById<Button>(R.id.id_btnCreateNewAccount)
+        val id_btnCreateNewAccount = findViewById<Button>(R.id.id_btnchange)
         val id_email = findViewById<EditText>(R.id.id_email)
         val id_password = findViewById<EditText>(R.id.id_password)
-        val id_firstname = findViewById<EditText>(R.id.id_firstname)
-        val id_lastname = findViewById<EditText>(R.id.id_lastname)
+        val id_firstname = findViewById<EditText>(R.id.id_newpassword)
+        val id_lastname = findViewById<EditText>(R.id.id_confirm)
         var sharedPreferences = getSharedPreferences("USER_INFO", MODE_PRIVATE)
         var editor: SharedPreferences.Editor = sharedPreferences.edit()
 

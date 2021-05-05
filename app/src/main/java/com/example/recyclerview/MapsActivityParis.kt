@@ -57,6 +57,10 @@ class MapsActivityParis : AppCompatActivity(), OnMapReadyCallback, BottomNavigat
                 val intent = Intent(this, ChooseCityWeather::class.java)
                 startActivity(intent)
             }
+            R.id.page_5 -> {
+                val intent = Intent(this, ManageAccount::class.java)
+                startActivity(intent)
+            }
         }
     }
 
